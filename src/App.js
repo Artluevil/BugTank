@@ -63,6 +63,7 @@ function App() {
             setPasswordError(err.message);
             break;
         }
+        handleLogin()
       });
   };
 
@@ -96,8 +97,6 @@ function App() {
         ref = fire.firestore().collection(fire.auth().currentUser.email)
         getMessages()
         setUser(user);
-        console.log(user.displayName)
-        console.log(user.email)
       } else {
         setUser("")
       }
@@ -108,18 +107,9 @@ function App() {
     return fire.auth().currentUser.email
   }
 
-  const makeMessage = () => {
-    console.log('tic')
-    return fire.firestore().collection('messages').add({
-      email: getUserEmail(),
-      text: 'random text',
-      timestamp: null
-    }).catch(function(error) {
-      console.error('error', error)
-    })
-  }
 
    function addMessage(message) {
+    ref = fire.firestore().collection(fire.auth().currentUser.email)
     ref
       .add({
         name: getUserEmail(),
@@ -129,8 +119,6 @@ function App() {
       })
   } 
 
-
-
   return (
     <BrowserRouter>
       <div className="App">
@@ -138,8 +126,9 @@ function App() {
           <Route exact path="/HomePage">
             <HomePage />
           </Route>
-          <Route exact path="/">
-            {user ? <HomePage dataMessages={dataMessages} loading={loading} addMessage={addMessage} makeMessage={makeMessage} handleLogout={handleLogout} userEmail={user.email}/> : <LoginPanel 
+          <Route exact path="/BugTank">
+            {user ? <HomePage dataMessages={dataMessages} loading={loading} addMessage={addMessage} handleLogout={handleLogout} userEmail={user.email}/> : <LoginPanel 
+              user={user}
               email={email} 
               password={password}
               setEmail={setEmail}
@@ -150,7 +139,7 @@ function App() {
               hasAccount={hasAccount} />}
           </Route>
           <Route exact path="/SignUp">
-            <SignUpPanel 
+            <SignUpPanel
               email={email} 
               password={password}
               setEmail={setEmail}

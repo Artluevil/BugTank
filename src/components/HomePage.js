@@ -2,7 +2,7 @@ import {React, useState} from 'react';
 
 const HomePage = (props) => {
 
-    const {handleLogout, userEmail, addMessage, dataMessages, loading} = props
+    const {handleLogout, userEmail, addMessage, dataMessages, loading,} = props
 
     const [message, setMessage] = useState('')
 

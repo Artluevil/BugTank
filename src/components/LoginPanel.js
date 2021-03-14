@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
-import {BrowserRouter, Link, Route } from 'react-router-dom';
-import SignUpPanel from './SignUpPanel'
+import React from 'react'
+import {Link } from 'react-router-dom';
 
 const LoginPanel = (props) => {
     
-    const { email, password, setEmail, setPassword, handleLogin, emailError, passwordError, hasAccount } = props;
+    const { email, password, setEmail, setPassword, handleLogin, emailError, passwordError} = props;
 
     return (
         <div>
