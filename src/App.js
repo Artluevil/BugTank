@@ -3,15 +3,17 @@ import './App.css';
 import fire from './fire'
 import LoginPanel from './components/LoginPanel'
 import SignUpPanel from './components/SignUpPanel'
-import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom'
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import HomePage from './components/HomePage';
 
 function App() {
   const [user, setUser] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [password1, setPassword1] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [passwordError1, setPasswordError1] = useState('');
   const [hasAccount, setHasAccount] = useState(false);
   const [loading, setLoading] = useState(false)
   const [dataMessages, setDataMessages] = useState([])
@@ -49,10 +51,14 @@ function App() {
   };
 
   const handleSignUp = () => {
-    clearErrors();
+    if (password === password1) {
+      clearErrors();
     fire
       .auth()
       .createUserWithEmailAndPassword(email, password)
+      .then(res => {
+        this.props.history.push('/BugTank')
+      })
       .catch(err => {
         switch(err.code) {
           case "auth/invalid-already-in-use":
@@ -61,10 +67,13 @@ function App() {
             break;
           case "auth/weak-password":
             setPasswordError(err.message);
-            break;
-        }
-        handleLogin()
+            break;  
+        }     
       });
+    } else {
+      setPasswordError1('Passwords dont match')
+      console.error('not matching passwords')
+    }
   };
 
   const handleLogout = () => {
@@ -119,6 +128,8 @@ function App() {
       })
   } 
 
+  const homePage = <HomePage dataMessages={dataMessages} loading={loading} addMessage={addMessage} handleLogout={handleLogout} userEmail={user.email}/>
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -127,7 +138,7 @@ function App() {
             <HomePage />
           </Route>
           <Route exact path="/BugTank">
-            {user ? <HomePage dataMessages={dataMessages} loading={loading} addMessage={addMessage} handleLogout={handleLogout} userEmail={user.email}/> : <LoginPanel 
+            {user ? homePage : <LoginPanel 
               user={user}
               email={email} 
               password={password}
@@ -139,14 +150,17 @@ function App() {
               hasAccount={hasAccount} />}
           </Route>
           <Route exact path="/SignUp">
-            <SignUpPanel
+            {user ? homePage : <SignUpPanel
               email={email} 
               password={password}
+              password1={password1}
               setEmail={setEmail}
               setPassword={setPassword}
+              setPassword1={setPassword1}
               handleSignUp={handleSignUp}
               emailError={emailError}
-              passwordError={passwordError} />
+              passwordError={passwordError}
+              passwordError1={passwordError1} />}
           </Route>
         </Switch>
       </div>

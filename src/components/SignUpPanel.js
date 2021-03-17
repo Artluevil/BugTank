@@ -1,27 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import fire from '../fire'
 
 const SignUpPanel = (props) => {
 
-    const {email, password, setEmail, setPassword, passwordError, emailError, handleSignUp} = props;
-
-    //Dodaj przekierowanie po zarejstrowaniu do panelu logowania
-
-    const userRedirect = () => {
-        console.log('yeet')
-        fire.auth().onAuthStateChanged(user => {
-          if(user){
-            const redirectLink = '/BugTank'
-            return redirectLink
-          } else {
-            const redirectLink = '/SignUp'
-            return redirectLink
-          }
-        });
-      };
-    
-
+    const {email, password, password1, setEmail, setPassword, setPassword1, passwordError, passwordError1, emailError, handleSignUp} = props;
+   
     return (
         <div>
             <div style={{display: 'inline-block'}}>
@@ -33,10 +16,13 @@ const SignUpPanel = (props) => {
                     <label>Password</label>
                     <input type="password" required value={password} onChange={e => setPassword(e.target.value)}></input>
                     <p>{passwordError}</p>
+                    <label>Repeat password</label>
+                    <input type="password" required value={password1} onChange={e => setPassword1(e.target.value)}></input>
+                    <p>{passwordError1}</p>
                 </div>
             </div>
             <div style={{marginTop: '25px'}}>
-                <Link to={userRedirect}><button onClick={handleSignUp}>Sign Up</button></Link>
+                <button onClick={handleSignUp}>Sign Up</button>
              </div>
              <div>
                  <p>Already have account? <Link to={"/BugTank"}>Sign in!</Link></p>
