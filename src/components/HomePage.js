@@ -9,16 +9,19 @@ const HomePage = (props) => {
 
     return (
         <div>
+            <button style={{marginRight: '-90%'}} onClick={handleLogout}>Logout</button>
             <h1>Welcome to the homepage {userEmail}</h1>
             <p>Bug tracker app</p>
-            <input value={message} type="text" onInput={e => setMessage(e.target.value)}/>
-            <button onClick={addMessage.bind(this, message)}>Make message</button>
-            <button onClick={handleLogout}>Logout</button>
+            <div className="adding-project">
+                <input value={message} type="text" onInput={e => setMessage(e.target.value)}/>
+                <button onClick={addMessage.bind(this, message)}>Enter name of your project</button>
+            </div>
             {loading ? <h1>Loading...</h1> : null}
             {dataMessages.map((messages) => (
                 <div>
-                    <p>{messages.name}</p>
-                    <p>{messages.dsc}</p>
+                    <p>{messages.userName}</p>
+                    <p>{messages.nameOfProject}</p>
+                    <p>Date of creation: {messages.dateOfCreation}</p>
                 </div>
             ))}
         </div>

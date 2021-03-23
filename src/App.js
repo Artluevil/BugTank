@@ -5,6 +5,7 @@ import LoginPanel from './components/LoginPanel'
 import SignUpPanel from './components/SignUpPanel'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import HomePage from './components/HomePage';
+import { auth } from 'firebase-admin';
 
 function App() {
   const [user, setUser] = useState('');
@@ -17,8 +18,12 @@ function App() {
   const [hasAccount, setHasAccount] = useState(false);
   const [loading, setLoading] = useState(false)
   const [dataMessages, setDataMessages] = useState([])
+  const [activeProjects, setActiveProjects] = useState(false)
+  const [size, setSize] = useState(0)
+  const [currentUserEmail, setCurrentUserEmail] = useState('default')
 
   let ref = fire.firestore().collection('default')
+  const db = fire.firestore()
 
 
   const clearInputs = () => {
@@ -85,25 +90,36 @@ function App() {
     setLoading(true)
     ref.onSnapshot((querySnapshot) => {
       const items = [];
+      setActiveProjects(true)
+      console.log('Active project', activeProjects)
       querySnapshot.forEach((doc) => {
         items.push(doc.data());
-        console.log(items)
       });
       setDataMessages(items)
       setLoading(false);
     })
   }
+// TO FIX or DELETE
+  function getNumberOfMessages() {
+    db.collection(currentUserEmail).get().then(snap => {
+      console.log(snap.size)
+    })
+  }
+
 
   useEffect(() => {
     authListener();
     getMessages();
   }, []);
 
+
   const authListener = () => {
     fire.auth().onAuthStateChanged(user => {
       if(user){
         clearInputs();
         ref = fire.firestore().collection(fire.auth().currentUser.email)
+        setCurrentUserEmail(fire.auth().currentUser.email)
+        getNumberOfMessages();
         getMessages()
         setUser(user);
       } else {
@@ -113,16 +129,27 @@ function App() {
   };
 
   const getUserEmail = () => {
-    return fire.auth().currentUser.email
+    const email = fire.auth().currentUser.email
+    if (email == null) {
+      return 'default'
+    } else {
+      return email
+    }
   }
 
 
    function addMessage(message) {
     ref = fire.firestore().collection(fire.auth().currentUser.email)
+    let currentDay = new Date()
+    let dd = String(currentDay.getDate()).padStart(2, '0')
+    let mm = String(currentDay.getMonth() + 1).padStart(2, '0')
+    let year = currentDay.getFullYear()
+
     ref
       .add({
-        name: getUserEmail(),
-        dsc: message,
+        userName: getUserEmail(),
+        nameOfProject: message,
+        dateOfCreation: dd + '/' + mm + '/' + year
       }).catch(error => {
         console.log(error)
       })
