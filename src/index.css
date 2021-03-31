@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+    background-color: white;
+    font-family: 'Bebas Neue', cursive;
+}
+
+.home-wrapper {
+    margin-top: 50px;
+}
+
+input {
+    text-align: center;
+}
+
+.logo {
+    position: absolute;
+    margin-left: 20px;
+    margin-top: -10px;
+}
+
+.logo img {
+    position: absolute;
+    width: 120px;
+}
+
+.home-wrapper h1{
+    color: #2D2926FF;
+}
+
+.home-wrapper p{
+    color: #2D2926FF;
+}
+
+.btn-create-project {
+    font-family: 'Bebas Neue', cursive;
+    background-color: #2D2926FF;;
+    color: white;
+    border: none;
+    border-radius: 2cm;
+    padding: 15px 30px 15px 30px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.adding-project input {
+    width: 15%;
+    padding: 12px 20px;
+    display: inline-block;
+    background-color: #2D2926FF;
+    color: white;
+    border: 2px solid black;
+    border-radius: 4px 0px 0px 4px;
+    box-sizing: border-box;
+    outline-style: solid;
+}
+
+.adding-project input:focus {
+    outline-color: black;
+}
+
+.adding-project button {
+    background-color: #2D2926FF;
+    border: none;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 0px 4px 4px 0px;
+    cursor: pointer;
+}
+
+.project-style {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #2D2926FF;
+    border-radius: 50px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.project-style span {
+    display: inline-block;
+    margin-right: 5%;
+}
+
+.project-style span p {
+    color: white;
+}
+
+.project-dsc-wrapper {
+    margin-left: 10%;
+}
+
+.project-dsc-wrapper span {
+    margin-left: 10%;
+}

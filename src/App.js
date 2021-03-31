@@ -21,6 +21,7 @@ function App() {
   const [activeProjects, setActiveProjects] = useState(false)
   const [size, setSize] = useState(0)
   const [currentUserEmail, setCurrentUserEmail] = useState('default')
+  const [projectClicked, setProjectClicked] = useState(false)
 
   let ref = fire.firestore().collection('default')
   const db = fire.firestore()
@@ -155,7 +156,7 @@ function App() {
       })
   } 
 
-  const homePage = <HomePage dataMessages={dataMessages} loading={loading} addMessage={addMessage} handleLogout={handleLogout} userEmail={user.email}/>
+  const homePage = <HomePage dataMessages={dataMessages} loading={loading} addMessage={addMessage} handleLogout={handleLogout} userEmail={user.email} projectClicked={projectClicked} setProjectClicked={setProjectClicked}/>
 
   return (
     <BrowserRouter>
