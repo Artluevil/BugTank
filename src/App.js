@@ -5,6 +5,7 @@ import LoginPanel from './components/LoginPanel'
 import SignUpPanel from './components/SignUpPanel'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import HomePage from './components/HomePage';
+import ProjectPage from './components/ProjectPage'
 import { auth } from 'firebase-admin';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
   const [size, setSize] = useState(0)
   const [currentUserEmail, setCurrentUserEmail] = useState('default')
   const [projectClicked, setProjectClicked] = useState(false)
+  const [currentProject, setCurrentProject] = useState('')
 
   let ref = fire.firestore().collection('default')
   const db = fire.firestore()
@@ -138,6 +140,10 @@ function App() {
     }
   }
 
+  const changeCurrentProject = nameOfProject => {
+    setCurrentProject(nameOfProject)
+  }
+
 
    function addMessage(message) {
     ref = fire.firestore().collection(fire.auth().currentUser.email)
@@ -156,7 +162,7 @@ function App() {
       })
   } 
 
-  const homePage = <HomePage dataMessages={dataMessages} loading={loading} addMessage={addMessage} handleLogout={handleLogout} userEmail={user.email} projectClicked={projectClicked} setProjectClicked={setProjectClicked}/>
+  const homePage = <HomePage changeCurrentProject={changeCurrentProject} dataMessages={dataMessages} loading={loading} addMessage={addMessage} handleLogout={handleLogout} userEmail={user.email} projectClicked={projectClicked} setProjectClicked={setProjectClicked}/>
 
   return (
     <BrowserRouter>
@@ -189,6 +195,9 @@ function App() {
               emailError={emailError}
               passwordError={passwordError}
               passwordError1={passwordError1} />}
+          </Route>
+          <Route path="/:id/:id">
+              <ProjectPage loading={loading} currentProject={currentProject} dataMessages={dataMessages}/>
           </Route>
         </Switch>
       </div>
