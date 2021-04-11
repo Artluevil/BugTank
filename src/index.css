@@ -47,7 +47,7 @@ input {
     background-color: #2D2926FF;;
     color: white;
     border: none;
-    border-radius: 2cm;
+    border-radius: 0.5rem;
     padding: 15px 30px 15px 30px;
     font-size: 22px;
     cursor: pointer;
@@ -85,7 +85,7 @@ input {
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: #2D2926FF;
-    border-radius: 50px;
+    border-radius: 0.5rem;
     text-align: left;
     cursor: pointer;
 }
@@ -108,5 +108,115 @@ input {
 }
 
 .text-editor {
-    margin-left: 18%;
+    margin-left: 23%;
 }
+
+.navigation {
+    position: absolute;
+    background-color: #2D2926FF;
+    height: 100%;;
+    margin-top: -21px;
+    padding-right: 50px;
+}
+
+.navigation li {
+    margin-top: 60px;
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.tags {
+    display: inline-block;
+    width: 52%;
+    margin-left: 4%;
+    margin-bottom: -15px;
+    border-bottom: 2px solid rgb(148, 148, 148);
+    margin-bottom: 0px;
+}
+
+.tags p {
+    display: inline-block;
+    margin-bottom: 2px;
+}
+
+.tags-name {
+    width: 20%;
+}
+
+.tags-description {
+    width: 52%;
+}
+
+.tags-date {
+    width: 14%;
+}
+
+.tags-priority {
+    width: 14%;
+}
+
+.bugs-container {
+    display: inline-block;
+    width: 51%;
+    border: 2px solid rgb(179, 179, 179);
+    padding-top: -10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.bugs-container p {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.bugs-name {
+    width: 10%;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-radius: 10px;
+    color: white;
+    background-color: crimson;
+}
+
+.bugs-dsc {
+    margin-left: 5%;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 55%;
+    border-radius: 10px;
+    color: white;
+    background-color:steelblue;
+}
+
+.bugs-date {
+    width: 10%;
+}
+
+.bugs-priority {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-radius: 10px;
+    width: 10%;
+    color: white;
+    background-color: red;
+}
+
+.btn-add {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 18px;
+    direction: none;
+    background-color: deepskyblue;
+    color: white;
+    border: none;
+    padding: 6px 20px 6px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius:5px;
+}
+
+
+
+

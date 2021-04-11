@@ -6,7 +6,6 @@ import SignUpPanel from './components/SignUpPanel'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import HomePage from './components/HomePage';
 import ProjectPage from './components/ProjectPage'
-import { auth } from 'firebase-admin';
 
 function App() {
   const [user, setUser] = useState('');
@@ -92,7 +91,7 @@ function App() {
   function getMessages() {
     setLoading(true)
     ref.onSnapshot((querySnapshot) => {
-      const items = [];
+      let items = [];
       setActiveProjects(true)
       console.log('Active project', activeProjects)
       querySnapshot.forEach((doc) => {
@@ -102,6 +101,7 @@ function App() {
       setLoading(false);
     })
   }
+
 // TO FIX or DELETE
   function getNumberOfMessages() {
     db.collection(currentUserEmail).get().then(snap => {

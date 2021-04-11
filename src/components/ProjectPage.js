@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
-import SunEditior from 'suneditor-react'
-import 'suneditor/dist/css/suneditor.min.css';
+import ProjectBugs from './ProjectBugs'
 
 const ProjectPage = (props) => {
     const [data, setData] = useState([])
-    const [editorText, setEditorText] = useState()
-    const [addBugClicked, setAddBugClicked] = useState(false)
 
     const {dataMessages, loading} = props
 
@@ -23,15 +20,6 @@ const ProjectPage = (props) => {
         console.log(data)
     }
 
-    function handleEditorChange(content) {
-        console.log(content)
-        setEditorText(content)
-    }
-
-    const handleAddBugClick = () => {
-        setAddBugClicked(true)
-        console.log(addBugClicked)
-    }
 
     useEffect(() => {
         getCurrentData()
@@ -39,16 +27,14 @@ const ProjectPage = (props) => {
 
     return (
         <div>
-            <h1>Collection ID: {id}</h1>
-            {loading ? <p>Loading...</p> : 
-            <div> 
-                <p>name of project: {data.nameOfProject}</p>
-             </div>}
-            {addBugClicked ? 
-            <div className="text-editor">
-                <SunEditior onChange={handleEditorChange} width="75%" height="500"/>
-            </div> : <button onClick={() => setAddBugClicked(true)}>Add bug</button>}
-            <div dangerouslySetInnerHTML={{__html: editorText}}></div>
+            <div className="navigation">
+                <ul>
+                    <li>Overview</li>
+                    <li>Bugs</li>
+                    <li>Settings</li>
+                </ul>
+            </div>
+            <ProjectBugs data={data}/>
         </div>
     )
 }
