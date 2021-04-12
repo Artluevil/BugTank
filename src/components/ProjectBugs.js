@@ -24,8 +24,9 @@ const ProjectBugs = (props) => {
         setAddBugClicked(true)
         console.log(addBugClicked)
     }
+    
 
-    const ref = fire.firestore().collection(fire.auth().currentUser.email + '-user-bugs')
+    const ref = fire.firestore().collection(localStorage.getItem('currentUserEmail') + '-user-bugs')
 
     function getBugs() {
         setLoadingBugs(true)
@@ -38,11 +39,27 @@ const ProjectBugs = (props) => {
           setLoadingBugs(false)
         })
       }
+      
+       function addBug(data) {
+        let currentDay = new Date()
+        let dd = String(currentDay.getDate()).padStart(2, '0')
+        let mm = String(currentDay.getMonth() + 1).padStart(2, '0')
+        let year = currentDay.getFullYear()
+    
+        ref
+          .add({
+            name: localStorage.getItem('currentUserEmail'),
+            dsc: data[0],
+            date: dd + '/' + mm + '/' + year,
+            priority: data[1],
+          }).catch(error => {
+            console.log(error)
+          })
+      }
 
       useEffect(() => {
           getBugs()
       }, [])
-
 
     return (
         <div>
@@ -52,7 +69,7 @@ const ProjectBugs = (props) => {
             <div> 
                 <p>name of project: {data.nameOfProject}</p>
              </div>}
-            {addBugClicked ? <AddBug /> : <Bugs setAddBugClicked={setAddBugClicked} loadingBugs={loadingBugs} dataBugs={dataBugs} />}
+            {addBugClicked ? <AddBug addBug={addBug}/> : <Bugs id={id} setAddBugClicked={setAddBugClicked} loadingBugs={loadingBugs} dataBugs={dataBugs} />}
         </div>
     )
 }

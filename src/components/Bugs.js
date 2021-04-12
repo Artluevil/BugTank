@@ -6,7 +6,22 @@ const Bugs = (props) => {
     const [bugClicked, setBugClicked] = useState(false)
     const [bugData, setBugData] = useState([])
 
-    const {setAddBugClicked, loadingBugs, dataBugs} = props
+    const {setAddBugClicked, loadingBugs, dataBugs, id} = props
+
+    function checkBugsRepository(bug) {
+        if(bug.id === id) {
+            return (
+                <div>
+                    <span onClick={() => {handleChangePage(); handleGiveData(bug)}} className="bugs-container">
+                        <p className="bugs-name">{bug.name}</p>
+                        <p className="bugs-dsc">{bug.dsc}</p>
+                        <p className="bugs-date">{bug.date}</p>
+                        <p className="bugs-priority">{bug.priority}</p>
+                    </span>
+                </div>
+            )
+        }
+    }
 
     function bugLoader() {
         return (
@@ -14,14 +29,7 @@ const Bugs = (props) => {
                 {bugClicked ? <BugInfo handleChangePage={handleChangePage} bugData={bugData}/> : 
                 
                 dataBugs.map((bug) => (
-                    <div>
-                        <span onClick={() => {handleChangePage(); handleGiveData(bug)}} className="bugs-container">
-                            <p className="bugs-name">{bug.name}</p>
-                            <p className="bugs-dsc">{bug.dsc}</p>
-                            <p className="bugs-date">{bug.date}</p>
-                            <p className="bugs-priority">{bug.priority}</p>
-                        </span>
-                    </div>
+                    checkBugsRepository(bug)
                     ))
                     }
             </div>

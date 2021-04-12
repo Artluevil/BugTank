@@ -1,6 +1,7 @@
 import {React, useState} from 'react';
 import logo from './BugTank.png'
 import { Link } from 'react-router-dom'
+import fire from '../fire'
 
 const HomePage = (props) => {
 
@@ -11,6 +12,7 @@ const HomePage = (props) => {
 
     const handleChange = value => {
         changeCurrentProject(value)
+        localStorage.setItem('currentUserEmail', fire.auth().currentUser.email)
         console.log('Value of currentProject', value)
     }
 
