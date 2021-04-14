@@ -2,10 +2,11 @@ import {React, useState} from 'react';
 import logo from './BugTank.png'
 import { Link } from 'react-router-dom'
 import fire from '../fire'
+import { MdClose } from 'react-icons/md'
 
 const HomePage = (props) => {
 
-    const {changeCurrentProject, handleLogout, userEmail, addMessage, dataMessages, loading, projectClicked, setProjectClicked} = props
+    const {changeCurrentProject, handleLogout, userEmail, addMessage, dataMessages, loading, projectClicked, setProjectClicked, deleteProject} = props
 
     const [message, setMessage] = useState('')
     const [currentProject, setCurrentProject] = useState('')
@@ -43,21 +44,26 @@ const HomePage = (props) => {
             <h1 className="active-projects">Active Projects: </h1>
             {loading ? <h1>Loading...</h1> : null}
             {dataMessages.map((messages) => (
-                <Link to={getLink(messages.id)}>
-                    <div className="project-style" onClick={() => {handleChange(messages.nameOfProject)}}>
-                        <div className="project-dsc-wrapper">
-                            <span className="project-user">
-                                <p>Project creator: {messages.userName}</p>
-                            </span>
-                            <span className="project-name">
-                                <p>Name of project: {messages.nameOfProject}</p>
-                            </span>
-                            <span className="project-date">
-                                <p>Date of creation: {messages.dateOfCreation}</p>
-                            </span>
+                <div style={{width: '80%',marginLeft: "10%"}}>
+                    <Link style={{width: '100%'}} to={getLink(messages.id)}>
+                        <div className="project-style" onClick={() => {handleChange(messages.nameOfProject)}}>
+                            <div className="project-dsc-wrapper">
+                                <span className="project-user">
+                                    <p>Project creator: {messages.userName}</p>
+                                </span>
+                                <span className="project-name">
+                                    <p>Name of project: {messages.nameOfProject}</p>
+                                </span>
+                                <span className="project-date">
+                                    <p>Date of creation: {messages.dateOfCreation}</p>
+                                </span>
+                            </div>
                         </div>
-                    </div>
-                </Link>
+                    </Link>
+                    <span onClick={() => deleteProject(messages)} className="settings-wrapper">
+                        <MdClose size="2em" style={{color: '#2D2926FF'}}/>
+                    </span>
+                </div>
             ))}
         </div>
     )

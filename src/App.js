@@ -6,6 +6,7 @@ import SignUpPanel from './components/SignUpPanel'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import HomePage from './components/HomePage';
 import ProjectPage from './components/ProjectPage'
+import { nanoid} from 'nanoid'
 
 function App() {
   const [user, setUser] = useState('');
@@ -156,13 +157,21 @@ function App() {
       .add({
         userName: getUserEmail(),
         nameOfProject: message,
-        dateOfCreation: dd + '/' + mm + '/' + year
+        dateOfCreation: dd + '/' + mm + '/' + year,
+        id: nanoid(8)
       }).catch(error => {
         console.log(error)
       })
-  } 
+  }
+  
+  const deleteProject = (project) => {
+    const getUid = fire.collection('kacper2@gmail.com').doc()
+    console.log(getUid)
+    //REMEMBER: this don't delete subcollection of collection you delete
+    //fire.firestore().collection(currentCollection).doc(clickedDocumentId).delete()
+  }
 
-  const homePage = <HomePage changeCurrentProject={changeCurrentProject} dataMessages={dataMessages} loading={loading} addMessage={addMessage} handleLogout={handleLogout} userEmail={user.email} projectClicked={projectClicked} setProjectClicked={setProjectClicked}/>
+  const homePage = <HomePage deleteProject={deleteProject} changeCurrentProject={changeCurrentProject} dataMessages={dataMessages} loading={loading} addMessage={addMessage} handleLogout={handleLogout} userEmail={user.email} projectClicked={projectClicked} setProjectClicked={setProjectClicked}/>
 
   return (
     <BrowserRouter>

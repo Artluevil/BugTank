@@ -92,32 +92,44 @@ input {
 }
 
 .project-style {
-    margin-left: 10%;
-    margin-right: 10%;
+    width: 100%;
     margin-top: 25px;
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: #2D2926FF;
     border-radius: 0.5rem;
     text-align: left;
-    cursor: pointer;
 }
 
 .project-style span {
     display: inline-block;
-    margin-right: 5%;
+    z-index: 1;
 }
+
 
 .project-style span p {
     color: white;
 }
 
-.project-dsc-wrapper {
-    margin-left: 10%;
+.project-user {
+    width: 25%;
+    margin-left: 20%;
 }
 
-.project-dsc-wrapper span {
-    margin-left: 10%;
+.project-name {
+    width: 25%;
+}
+
+.project-date {
+    width: 25%;
+}
+
+
+.settings-wrapper {
+    position: absolute;
+    margin-top: -55px;
+    margin-left: 41%;
+    cursor: pointer;
 }
 
 .text-editor {
