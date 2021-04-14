@@ -48,10 +48,12 @@ const ProjectBugs = (props) => {
     
         ref
           .add({
+            id: id,
             name: localStorage.getItem('currentUserEmail'),
             dsc: data[0],
             date: dd + '/' + mm + '/' + year,
             priority: data[1],
+            bugContent: data[2],
           }).catch(error => {
             console.log(error)
           })
@@ -69,7 +71,7 @@ const ProjectBugs = (props) => {
             <div> 
                 <p>name of project: {data.nameOfProject}</p>
              </div>}
-            {addBugClicked ? <AddBug addBug={addBug}/> : <Bugs id={id} setAddBugClicked={setAddBugClicked} loadingBugs={loadingBugs} dataBugs={dataBugs} />}
+            {addBugClicked ? <AddBug setAddBugClicked={setAddBugClicked} addBug={addBug}/> : <Bugs id={id} setAddBugClicked={setAddBugClicked} loadingBugs={loadingBugs} dataBugs={dataBugs} />}
         </div>
     )
 }

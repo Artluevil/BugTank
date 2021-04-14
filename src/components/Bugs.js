@@ -8,6 +8,16 @@ const Bugs = (props) => {
 
     const {setAddBugClicked, loadingBugs, dataBugs, id} = props
 
+    function getColor(priority) {
+        if (priority === "Low") {
+            return {backgroundColor: "Green"}
+        } else if (priority === "Medium") {
+            return {backgroundColor: "Orange"}
+        } else {
+            return {backgroundColor: "Red"}
+        }
+    }
+
     function checkBugsRepository(bug) {
         if(bug.id === id) {
             return (
@@ -16,7 +26,7 @@ const Bugs = (props) => {
                         <p className="bugs-name">{bug.name}</p>
                         <p className="bugs-dsc">{bug.dsc}</p>
                         <p className="bugs-date">{bug.date}</p>
-                        <p className="bugs-priority">{bug.priority}</p>
+                        <p style={getColor(bug.priority)} className="bugs-priority">{bug.priority}</p>
                     </span>
                 </div>
             )
@@ -53,7 +63,7 @@ const Bugs = (props) => {
                     <p className="tags-date">Date</p>
                     <p className="tags-priority">Priority</p>
                 </div>
-                <button className="btn-add" onClick={() => setAddBugClicked(true)}>Add</button>
+                <button className="btn-dark-gray" onClick={() => setAddBugClicked(true)}>Add</button>
             </div>
             {loadingBugs ? <p>Loading...</p> :
             <div >
