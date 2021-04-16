@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import fire from '../fire'
 import AddBug from './AddBug'
 import Bugs from './Bugs'
+import { nanoid } from 'nanoid'
 
 const ProjectBugs = (props) => {
 
@@ -10,8 +11,10 @@ const ProjectBugs = (props) => {
     const [addBugClicked, setAddBugClicked] = useState(false)
     const [dataBugs, setDataBugs] = useState([])
     const [loadingBugs, setLoadingBugs] = useState(false)
+    const [bugEditing, setBugEditing] = useState(false)
+    const [docId, setDocId] = useState('')
 
-    const {data, loading} = props
+    const {data, loading, getCurrentDate} = props
 
     let { id } = useParams()
 
@@ -41,27 +44,39 @@ const ProjectBugs = (props) => {
       }
       
        function addBug(data) {
-        let currentDay = new Date()
-        let dd = String(currentDay.getDate()).padStart(2, '0')
-        let mm = String(currentDay.getMonth() + 1).padStart(2, '0')
-        let year = currentDay.getFullYear()
+        const docId = nanoid(8)
+        //aray of data contains:
+        //data[0] - description of bug, data[1] - priority of bug, data[2] - content inside of bug
     
-        ref
-          .add({
-            id: id,
-            name: localStorage.getItem('currentUserEmail'),
-            dsc: data[0],
-            date: dd + '/' + mm + '/' + year,
-            priority: data[1],
-            bugContent: data[2],
-          }).catch(error => {
-            console.log(error)
-          })
+        ref.doc(docId).set({
+          id: id,
+          docId: docId,
+          name: localStorage.getItem('currentUserEmail'),
+          dsc: data[0],
+          date: getCurrentDate(),
+          priority: data[1],
+          bugContent: data[2],
+        }).catch(error => {
+          console.log(error)
+        })
       }
 
       useEffect(() => {
           getBugs()
       }, [])
+
+      function handleChangeBugEditor(data) {
+        setAddBugClicked(true)
+        setBugEditing(true)
+        setDocId(data)
+        
+      }
+
+      function editCurrentBug(data) {
+        console.log(data)
+        console.log(docId)
+        ref.doc(docId).update({dsc: data[0], priority: data[1], bugContent: data[2]})
+      }
 
     return (
         <div>
@@ -71,7 +86,7 @@ const ProjectBugs = (props) => {
             <div> 
                 <p>name of project: {data.nameOfProject}</p>
              </div>}
-            {addBugClicked ? <AddBug setAddBugClicked={setAddBugClicked} addBug={addBug}/> : <Bugs id={id} setAddBugClicked={setAddBugClicked} loadingBugs={loadingBugs} dataBugs={dataBugs} />}
+            {addBugClicked ? <AddBug editCurrentBug={editCurrentBug} bugEditing={bugEditing} setBugEditing={setBugEditing} setAddBugClicked={setAddBugClicked} addBug={addBug}/> : <Bugs handleChangeBugEditor={handleChangeBugEditor} id={id} setAddBugClicked={setAddBugClicked} loadingBugs={loadingBugs} dataBugs={dataBugs} />}
         </div>
     )
 }

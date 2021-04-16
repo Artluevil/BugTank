@@ -6,15 +6,17 @@ const Bugs = (props) => {
     const [bugClicked, setBugClicked] = useState(false)
     const [bugData, setBugData] = useState([])
 
-    const {setAddBugClicked, loadingBugs, dataBugs, id} = props
+    const {setAddBugClicked, loadingBugs, dataBugs, id, handleChangeBugEditor} = props
 
     function getColor(priority) {
         if (priority === "Low") {
             return {backgroundColor: "Green"}
         } else if (priority === "Medium") {
             return {backgroundColor: "Orange"}
-        } else {
+        } else if (priority === "High") {
             return {backgroundColor: "Red"}
+        } else {
+            return {backgroundColor: "gray"}
         }
     }
 
@@ -36,7 +38,7 @@ const Bugs = (props) => {
     function bugLoader() {
         return (
             <div>
-                {bugClicked ? <BugInfo handleChangePage={handleChangePage} bugData={bugData}/> : 
+                {bugClicked ? <BugInfo handleChangeBugEditor={handleChangeBugEditor} handleChangePage={handleChangePage} bugData={bugData}/> : 
                 
                 dataBugs.map((bug) => (
                     checkBugsRepository(bug)
@@ -53,7 +55,6 @@ const Bugs = (props) => {
     function handleGiveData(data) {
         setBugData(data)
     }
-
     return (
         <div>
             <div style={bugClicked ? {visibility: "hidden"} : {visibility: "visible"}}>

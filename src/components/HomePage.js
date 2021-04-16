@@ -60,7 +60,7 @@ const HomePage = (props) => {
                             </div>
                         </div>
                     </Link>
-                    <span onClick={() => deleteProject(messages)} className="settings-wrapper">
+                    <span onClick={() => deleteProject(messages.id)} className="settings-wrapper">
                         <MdClose size="2em" style={{color: '#2D2926FF'}}/>
                     </span>
                 </div>

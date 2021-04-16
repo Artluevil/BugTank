@@ -145,28 +145,35 @@ function App() {
     setCurrentProject(nameOfProject)
   }
 
-
-   function addMessage(message) {
-    ref = fire.firestore().collection(fire.auth().currentUser.email)
+  function getCurrentDate() {
     let currentDay = new Date()
     let dd = String(currentDay.getDate()).padStart(2, '0')
     let mm = String(currentDay.getMonth() + 1).padStart(2, '0')
     let year = currentDay.getFullYear()
 
+    const currentDate =  dd + '/' + mm + '/' + year
+
+    return currentDate
+
+  }
+
+
+   function addMessage(message) {
+    ref = fire.firestore().collection(fire.auth().currentUser.email)
+
     ref
       .add({
         userName: getUserEmail(),
         nameOfProject: message,
-        dateOfCreation: dd + '/' + mm + '/' + year,
+        dateOfCreation: getCurrentDate(),
         id: nanoid(8)
       }).catch(error => {
         console.log(error)
       })
   }
   
-  const deleteProject = (project) => {
-    const getUid = fire.collection('kacper2@gmail.com').doc()
-    console.log(getUid)
+  const deleteProject = (docId) => {
+    console.log(fire.firestore().collection(fire.auth().currentUser.email + '-user-bugs').doc(docId))
     //REMEMBER: this don't delete subcollection of collection you delete
     //fire.firestore().collection(currentCollection).doc(clickedDocumentId).delete()
   }
@@ -206,7 +213,7 @@ function App() {
               passwordError1={passwordError1} />}
           </Route>
           <Route path="/:id/:id">
-              <ProjectPage loading={loading} currentProject={currentProject} dataMessages={dataMessages}/>
+              <ProjectPage getCurrentDate={getCurrentDate} loading={loading} currentProject={currentProject} dataMessages={dataMessages}/>
           </Route>
         </Switch>
       </div>

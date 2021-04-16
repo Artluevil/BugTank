@@ -5,7 +5,7 @@ import ProjectBugs from './ProjectBugs'
 const ProjectPage = (props) => {
     const [data, setData] = useState([])
 
-    const {dataMessages, loading} = props
+    const {dataMessages, loading, getCurrentDate} = props
 
     let { id } = useParams()
 
@@ -34,7 +34,7 @@ const ProjectPage = (props) => {
                     <li>Settings</li>
                 </ul>
             </div>
-            <ProjectBugs data={data}/>
+            <ProjectBugs getCurrentDate={getCurrentDate} data={data}/>
         </div>
     )
 }

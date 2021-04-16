@@ -2,17 +2,13 @@ import React, { useState } from 'react';
 import SunEditior from 'suneditor-react'
 import 'suneditor/dist/css/suneditor.min.css';
 
-
-
-
-
 const AddBug = (props) => {
 
     const [descriptionOfBug, setDescriptionOfBug] = useState('')
     const [editorText, setEditorText] = useState('')
     const [priority, setPriority] = useState()
 
-    const {addBug, setAddBugClicked} = props
+    const {addBug, setAddBugClicked, bugEditing, setBugEditing, editCurrentBug} = props
 
     const handleTextEditor = (content) => {
         setEditorText(content)
@@ -22,9 +18,16 @@ const AddBug = (props) => {
         setPriority(e.target.value)
     }
 
+
     function submitBug() {
         const data = [descriptionOfBug, priority, editorText]
-        addBug(data)
+        if (bugEditing) {
+            editCurrentBug(data)
+            setBugEditing(false)
+        } else {
+            addBug(data)
+        }
+        setAddBugClicked(false)
     }
  
 
