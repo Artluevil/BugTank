@@ -9,6 +9,7 @@ const ProjectBugs = (props) => {
 
     const [editorText, setEditorText] = useState()
     const [addBugClicked, setAddBugClicked] = useState(false)
+    const [bugClicked, setBugClicked] = useState(false)
     const [dataBugs, setDataBugs] = useState([])
     const [loadingBugs, setLoadingBugs] = useState(false)
     const [bugEditing, setBugEditing] = useState(false)
@@ -78,15 +79,19 @@ const ProjectBugs = (props) => {
         ref.doc(docId).update({dsc: data[0], priority: data[1], bugContent: data[2]})
       }
 
+      function deleteCurrentBug(docId) {
+        ref.doc(docId).delete()
+        setBugClicked(false)
+      }
+
     return (
         <div>
             <h1>Project Bugs</h1>
-            <h2>Collection ID: {id}</h2>
             {loading ? <p>Loading...</p> : 
             <div> 
-                <p>name of project: {data.nameOfProject}</p>
+                <h2>name of project: {data.nameOfProject}</h2>
              </div>}
-            {addBugClicked ? <AddBug editCurrentBug={editCurrentBug} bugEditing={bugEditing} setBugEditing={setBugEditing} setAddBugClicked={setAddBugClicked} addBug={addBug}/> : <Bugs handleChangeBugEditor={handleChangeBugEditor} id={id} setAddBugClicked={setAddBugClicked} loadingBugs={loadingBugs} dataBugs={dataBugs} />}
+            {addBugClicked ? <AddBug editCurrentBug={editCurrentBug} bugEditing={bugEditing} setBugEditing={setBugEditing} setAddBugClicked={setAddBugClicked} addBug={addBug}/> : <Bugs deleteCurrentBug={deleteCurrentBug} handleChangeBugEditor={handleChangeBugEditor} id={id} bugClicked={bugClicked} setBugClicked={setBugClicked} setAddBugClicked={setAddBugClicked} loadingBugs={loadingBugs} dataBugs={dataBugs} />}
         </div>
     )
 }

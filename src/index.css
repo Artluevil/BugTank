@@ -91,6 +91,32 @@ input {
     border-radius:5px;
 }
 
+.btn-cyan {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 18px;
+    direction: none;
+    background-color: rgb(42, 255, 255);
+    color: black;
+    border: none;
+    padding: 6px 20px 6px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius:5px;
+}
+
+.btn-red {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 18px;
+    direction: none;
+    background-color: rgb(255, 0, 0);
+    color: black;
+    border: none;
+    padding: 6px 20px 6px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius:5px;
+}
+
 .project-style {
     width: 100%;
     margin-top: 25px;
@@ -255,6 +281,18 @@ input {
     width: 60%;
     margin-left: 20%;
     border: 1px solid gray;
+}
+
+.bug-options {
+    margin-top: 20px;
+    margin-left: 50%;
+}
+
+.bug-reporter-container {
+    width: 20%;
+    margin-left: 40%;
+    border-radius: 10px;
+    background: rgb(255, 255, 255);
 }
 
 

@@ -1,25 +1,27 @@
 import React from 'react';
+import fire from '../fire'
 
 const BugInfo = (props) => {
 
-    const {bugData, handleChangePage, handleChangeBugEditor} = props
+    const {bugData, handleChangePage, handleChangeBugEditor, deleteCurrentBug} = props
 
     return (
         <div style={{marginTop: '-40px'}}>
-            <p>Bug priority: {bugData.priority}</p>
             <div>
                 <button className="btn-dark-gray" onClick={handleChangePage}>Back to bugs</button>
             </div>
             <div>
-                <button onClick={() => handleChangeBugEditor(bugData.docId)} style={{marginTop: '20px', backgroundColor: 'cyan', color: 'black'}} className="btn-dark-gray">Edit bug</button>
-            </div>
-            <div>
-                <h2 style={{marginBottom: "-10px"}}>Reporter: </h2>
-                <p>{bugData.name}</p>
-                <p>{bugData.id}</p>
-                <p>{bugData.docId}</p>
+                <div className="bug-reporter-container">
+                    <h2 style={{marginBottom: "-10px"}}>Reporter: </h2>
+                    <p>{bugData.name}</p>
+                </div>
+                <p>Bug priority: {bugData.priority}</p>
                 <div className="bug-content">
                     <div dangerouslySetInnerHTML={{__html: bugData.bugContent}}></div>
+                </div>
+                <div className="bug-options">
+                    <button onClick={() => handleChangeBugEditor(bugData.docId)} className="btn-cyan">Edit bug</button>
+                    <button onClick={() => deleteCurrentBug(bugData.docId)} className="btn-red">Delete</button>
                 </div>
             </div>
         </div>

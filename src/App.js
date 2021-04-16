@@ -6,6 +6,7 @@ import SignUpPanel from './components/SignUpPanel'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import HomePage from './components/HomePage';
 import ProjectPage from './components/ProjectPage'
+import Overivew from './components/Overview'
 import { nanoid} from 'nanoid'
 
 function App() {
@@ -161,19 +162,41 @@ function App() {
    function addMessage(message) {
     ref = fire.firestore().collection(fire.auth().currentUser.email)
 
-    ref
-      .add({
-        userName: getUserEmail(),
-        nameOfProject: message,
-        dateOfCreation: getCurrentDate(),
-        id: nanoid(8)
-      }).catch(error => {
-        console.log(error)
-      })
+    const projectId = nanoid(12)
+
+    ref.doc(projectId).set({
+      userName: getUserEmail(),
+      nameOfProject: message,
+      dateOfCreation: getCurrentDate(),
+      id: projectId,
+    }).catch(error => {
+      console.log(error)
+    })
+      // .add({
+      //   userName: getUserEmail(),
+      //   nameOfProject: message,
+      //   dateOfCreation: getCurrentDate(),
+      //   id: nanoid(8)
+      // }).catch(error => {
+      //   console.log(error)
+      // })
   }
   
-  const deleteProject = (docId) => {
-    console.log(fire.firestore().collection(fire.auth().currentUser.email + '-user-bugs').doc(docId))
+  const deleteProject = (projectId) => {
+    const userBugsCollection = fire.auth().currentUser.email + '-user-bugs'
+    fire.firestore().collection(userBugsCollection).onSnapshot(querrySnapshot => {
+      const bugs = []
+      querrySnapshot.forEach((doc) => {
+        bugs.push(doc.data())
+      })
+      bugs.map(bugsData => {
+        if(bugsData.id === projectId) {
+          console.log(bugsData.docId)
+          fire.firestore().collection(userBugsCollection).doc(bugsData.docId).delete()
+        }
+      })
+    })
+    fire.firestore().collection(fire.auth().currentUser.email).doc(projectId).delete()
     //REMEMBER: this don't delete subcollection of collection you delete
     //fire.firestore().collection(currentCollection).doc(clickedDocumentId).delete()
   }

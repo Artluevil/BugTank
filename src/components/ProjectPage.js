@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import ProjectBugs from './ProjectBugs'
+import Overview from './Overview';
 
 const ProjectPage = (props) => {
     const [data, setData] = useState([])
+    const [activePage, setActivePage] = useState('Overview')
 
     const {dataMessages, loading, getCurrentDate} = props
 
@@ -20,6 +22,14 @@ const ProjectPage = (props) => {
         console.log(data)
     }
 
+    function getActivePage() {
+        if (activePage === 'Overview') {
+            return < Overview/>
+        } else if (activePage === "Bugs") {
+            return <ProjectBugs getCurrentDate={getCurrentDate} data={data}/>
+        }
+    }
+
 
     useEffect(() => {
         getCurrentData()
@@ -29,12 +39,12 @@ const ProjectPage = (props) => {
         <div>
             <div className="navigation">
                 <ul>
-                    <li>Overview</li>
-                    <li>Bugs</li>
+                    <li onClick={() => setActivePage('Overview')}>Overview</li>
+                    <li onClick={() => setActivePage('Bugs')}>Bugs</li>
                     <li>Settings</li>
                 </ul>
             </div>
-            <ProjectBugs getCurrentDate={getCurrentDate} data={data}/>
+            {getActivePage()}
         </div>
     )
 }

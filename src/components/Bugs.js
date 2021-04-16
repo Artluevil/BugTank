@@ -3,10 +3,9 @@ import BugInfo from './BugInfo'
 
 const Bugs = (props) => {
 
-    const [bugClicked, setBugClicked] = useState(false)
     const [bugData, setBugData] = useState([])
 
-    const {setAddBugClicked, loadingBugs, dataBugs, id, handleChangeBugEditor} = props
+    const {setAddBugClicked, loadingBugs, dataBugs, id, handleChangeBugEditor, deleteCurrentBug, bugClicked, setBugClicked} = props
 
     function getColor(priority) {
         if (priority === "Low") {
@@ -38,7 +37,7 @@ const Bugs = (props) => {
     function bugLoader() {
         return (
             <div>
-                {bugClicked ? <BugInfo handleChangeBugEditor={handleChangeBugEditor} handleChangePage={handleChangePage} bugData={bugData}/> : 
+                {bugClicked ? <BugInfo deleteCurrentBug={deleteCurrentBug} handleChangeBugEditor={handleChangeBugEditor} handleChangePage={handleChangePage} bugData={bugData}/> : 
                 
                 dataBugs.map((bug) => (
                     checkBugsRepository(bug)
