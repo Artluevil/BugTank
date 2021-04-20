@@ -4,6 +4,73 @@ body {
     font-family: 'Bebas Neue', cursive;
 }
 
+.sign-in-wrapper {
+    width: 500px;
+    height: 400px;
+    margin-left: 37%;
+    margin-top: 100px;
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 5px;
+    background-color: rgb(250, 250, 250);
+    -webkit-box-shadow: 4px 6px 5px 0px rgba(186,186,186,1);
+    -moz-box-shadow: 4px 6px 5px 0px rgba(186,186,186,1);
+    box-shadow: 4px 6px 5px 0px rgba(186,186,186,1);
+}
+
+.sign-in-wrapper h1{
+    padding-top: 30px
+}
+
+.sign-in-wrapper label {
+    margin-right: 10px
+}
+
+.btn-sign-in {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 16px;
+    background-color: #2D2926FF;
+    border: none;
+    color: white;
+    padding: 5px 30px;
+    border-radius: 4px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.helper-links {
+    margin-top: 30px;
+}
+
+ul {
+    margin-left: -20px;
+    margin-right: -20px;
+    list-style-type: none;
+    float: left;
+    margin-top: 100px;
+}
+
+ul li {
+    margin-left: 0px;
+    width: 120px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 5px;
+    color: black;
+    transition: 0.1s ease-in-out;
+}
+
+ul li:hover {
+    background-color: rgb(187, 186, 186);
+}
+
+.nav-logo {
+    position: absolute;
+    width: 100px;
+    left: 40px;
+    margin-top: 40px;
+    z-index: 2;
+}
+
 .home-wrapper {
     margin-top: 50px;
 }
@@ -163,8 +230,6 @@ input {
 }
 
 .navigation {
-    position: absolute;
-    background-color: #2D2926FF;
     height: 100%;;
     margin-top: -21px;
     padding-right: 50px;
@@ -173,7 +238,7 @@ input {
 .navigation li {
     margin-top: 60px;
     text-decoration: none;
-    color: white;
+    color: black;
     font-size: 22px;
     cursor: pointer;
 }
@@ -295,7 +360,37 @@ input {
     background: rgb(255, 255, 255);
 }
 
+.chart-priority {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    margin-left: 0.2%;
+    margin-top: -210px;
+}
 
+.priority-legend {
+    width: 400px;
+    height: 400px;
+}
+
+.block-legend {
+    padding: 1px 10px 1px 10px;
+    margin-left: 50px;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
+.green {
+    background: green;
+}
+
+.orange {
+    background: orange;
+}
+
+.red {
+    background: red;
+}
 
 
 

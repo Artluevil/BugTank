@@ -14,8 +14,9 @@ const ProjectBugs = (props) => {
     const [loadingBugs, setLoadingBugs] = useState(false)
     const [bugEditing, setBugEditing] = useState(false)
     const [docId, setDocId] = useState('')
+    const [editorPassValue, setEditorPassValue] = useState([])
 
-    const {data, loading, getCurrentDate} = props
+    const {data, loading, getCurrentDate, getDataBugs} = props
 
     let { id } = useParams()
 
@@ -40,6 +41,7 @@ const ProjectBugs = (props) => {
             items.push(doc.data());
           });
           setDataBugs(items)
+          getDataBugs(items)
           setLoadingBugs(false)
         })
       }
@@ -69,13 +71,14 @@ const ProjectBugs = (props) => {
       function handleChangeBugEditor(data) {
         setAddBugClicked(true)
         setBugEditing(true)
-        setDocId(data)
+        setDocId(data.docId)
+        const passValue = [data.dsc, data.bugContent]
+        setEditorPassValue(passValue)
         
       }
 
+
       function editCurrentBug(data) {
-        console.log(data)
-        console.log(docId)
         ref.doc(docId).update({dsc: data[0], priority: data[1], bugContent: data[2]})
       }
 
@@ -91,7 +94,7 @@ const ProjectBugs = (props) => {
             <div> 
                 <h2>name of project: {data.nameOfProject}</h2>
              </div>}
-            {addBugClicked ? <AddBug editCurrentBug={editCurrentBug} bugEditing={bugEditing} setBugEditing={setBugEditing} setAddBugClicked={setAddBugClicked} addBug={addBug}/> : <Bugs deleteCurrentBug={deleteCurrentBug} handleChangeBugEditor={handleChangeBugEditor} id={id} bugClicked={bugClicked} setBugClicked={setBugClicked} setAddBugClicked={setAddBugClicked} loadingBugs={loadingBugs} dataBugs={dataBugs} />}
+            {addBugClicked ? <AddBug editorPassValue={editorPassValue} editCurrentBug={editCurrentBug} bugEditing={bugEditing} setBugEditing={setBugEditing} setAddBugClicked={setAddBugClicked} addBug={addBug}/> : <Bugs deleteCurrentBug={deleteCurrentBug} handleChangeBugEditor={handleChangeBugEditor} id={id} bugClicked={bugClicked} setBugClicked={setBugClicked} setAddBugClicked={setAddBugClicked} loadingBugs={loadingBugs} dataBugs={dataBugs} />}
         </div>
     )
 }

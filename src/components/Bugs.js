@@ -14,7 +14,7 @@ const Bugs = (props) => {
             return {backgroundColor: "Orange"}
         } else if (priority === "High") {
             return {backgroundColor: "Red"}
-        } else {
+        } else if (priority === "Closed"){
             return {backgroundColor: "gray"}
         }
     }

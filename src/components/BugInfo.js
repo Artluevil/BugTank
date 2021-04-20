@@ -5,6 +5,11 @@ const BugInfo = (props) => {
 
     const {bugData, handleChangePage, handleChangeBugEditor, deleteCurrentBug} = props
 
+    function getDefaultValues() {
+        const defaultValues = [bugData.dsc, bugData.bugContent]
+        return defaultValues
+    }
+
     return (
         <div style={{marginTop: '-40px'}}>
             <div>
@@ -20,7 +25,7 @@ const BugInfo = (props) => {
                     <div dangerouslySetInnerHTML={{__html: bugData.bugContent}}></div>
                 </div>
                 <div className="bug-options">
-                    <button onClick={() => handleChangeBugEditor(bugData.docId)} className="btn-cyan">Edit bug</button>
+                    <button onClick={() => handleChangeBugEditor(bugData)} className="btn-cyan">Edit bug</button>
                     <button onClick={() => deleteCurrentBug(bugData.docId)} className="btn-red">Delete</button>
                 </div>
             </div>

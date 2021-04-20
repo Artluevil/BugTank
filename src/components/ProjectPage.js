@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import ProjectBugs from './ProjectBugs'
 import Overview from './Overview';
+import BugTankLogo from './BugTank.png'
 
 const ProjectPage = (props) => {
     const [data, setData] = useState([])
-    const [activePage, setActivePage] = useState('Overview')
+    const [activePage, setActivePage] = useState('Bugs')
+    const [dataBugs, setDataBugs] = useState([])
 
     const {dataMessages, loading, getCurrentDate} = props
 
@@ -13,21 +15,22 @@ const ProjectPage = (props) => {
 
     const getCurrentData = () => {
         dataMessages.map(messages => {
-            console.log('messages.id:', messages.id)
-            console.log('id:', id)
             if (messages.id === id) {
                 setData(messages)
             }
         })
-        console.log(data)
     }
 
     function getActivePage() {
         if (activePage === 'Overview') {
-            return < Overview/>
+            return < Overview dataTest={data} id={id} dataBugs={dataBugs}/>
         } else if (activePage === "Bugs") {
-            return <ProjectBugs getCurrentDate={getCurrentDate} data={data}/>
+            return <ProjectBugs getCurrentDate={getCurrentDate} data={data} getDataBugs={getDataBugs}/>
         }
+    }
+
+    function getDataBugs(dataBugs) {
+        setDataBugs(dataBugs)
     }
 
 
@@ -37,10 +40,13 @@ const ProjectPage = (props) => {
 
     return (
         <div>
+            <div>
+                <img className="nav-logo" src={BugTankLogo}/>
+            </div>
             <div className="navigation">
                 <ul>
-                    <li onClick={() => setActivePage('Overview')}>Overview</li>
-                    <li onClick={() => setActivePage('Bugs')}>Bugs</li>
+                    <li style={activePage == 'Overview' ? {background: 'gray'} : null} onClick={() => setActivePage('Overview')}>Overview</li>
+                    <li style={activePage == 'Bugs' ? {background: 'gray'} : null} onClick={() => setActivePage('Bugs')}>Bugs</li>
                     <li>Settings</li>
                 </ul>
             </div>
