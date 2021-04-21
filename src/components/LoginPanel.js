@@ -6,16 +6,18 @@ const LoginPanel = (props) => {
     const { email, password, setEmail, setPassword, handleLogin, emailError, passwordError} = props;
 
     return (
-        <div className="sign-in-wrapper">
-                <h1>Sign in!</h1>
-                <label>Username</label>
-                <input type="text" autoFocus value={email} onChange={e => setEmail(e.target.value)}></input>
-                <p className="errorMsg">{emailError}</p>
-                <label>Password</label>
-                <input type="password" required value={password} onChange={e => setPassword(e.target.value)}></input>
-                <p className="errorMsg">{passwordError}</p>
+            <div className="sign-in-wrapper">
+                <div className="inputs-wrapper">
+                    <h1>Sign in!</h1>
+                    <label className="email">Email</label>
+                    <input type="text" autoFocus value={email} onChange={e => setEmail(e.target.value)}></input>
+                    <p className="error-msg">{emailError}</p>
+                    <label>Password</label>
+                    <input type="password" required value={password} onChange={e => setPassword(e.target.value)}></input>
+                    <p className="error-msg">{passwordError}</p>
+                </div>
                 <div className="btnContainer">
-                    <button className="btn-sign-in" onClick={handleLogin}>Sign In</button>
+                    <button className="btn-sign-in-out" onClick={handleLogin}>Sign In</button>
                 </div>
                 <div className="helper-links">
                     <p>Dont have account? <Link to={"/SignUp"}>Sign Up!</Link></p>

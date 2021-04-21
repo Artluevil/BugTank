@@ -11,9 +11,9 @@ const BugInfo = (props) => {
     }
 
     return (
-        <div style={{marginTop: '-40px'}}>
+        <div style={{marginTop: '-40px', marginLeft: '1%'}}>
             <div>
-                <button className="btn-dark-gray" onClick={handleChangePage}>Back to bugs</button>
+                <button style={{marginLeft: '-0.5%'}} className="btn-dark-gray" onClick={handleChangePage}>Back to bugs</button>
             </div>
             <div>
                 <div className="bug-reporter-container">

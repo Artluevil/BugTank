@@ -89,10 +89,10 @@ const ProjectBugs = (props) => {
 
     return (
         <div>
-            <h1>Project Bugs</h1>
+            <h1 style={{marginLeft: '10px'}}>Project Bugs</h1>
             {loading ? <p>Loading...</p> : 
-            <div> 
-                <h2>name of project: {data.nameOfProject}</h2>
+            <div className="project-name-wrapper"> 
+                <h2 className="project-name-text">name of project: {data.nameOfProject}</h2>
              </div>}
             {addBugClicked ? <AddBug editorPassValue={editorPassValue} editCurrentBug={editCurrentBug} bugEditing={bugEditing} setBugEditing={setBugEditing} setAddBugClicked={setAddBugClicked} addBug={addBug}/> : <Bugs deleteCurrentBug={deleteCurrentBug} handleChangeBugEditor={handleChangeBugEditor} id={id} bugClicked={bugClicked} setBugClicked={setBugClicked} setAddBugClicked={setAddBugClicked} loadingBugs={loadingBugs} dataBugs={dataBugs} />}
         </div>

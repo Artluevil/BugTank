@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import ProjectBugs from './ProjectBugs'
 import Overview from './Overview';
 import BugTankLogo from './BugTank.png'
+import { AiFillGithub } from "react-icons/ai";
 
 const ProjectPage = (props) => {
     const [data, setData] = useState([])
@@ -48,6 +49,12 @@ const ProjectPage = (props) => {
                     <li style={activePage == 'Overview' ? {background: 'gray'} : null} onClick={() => setActivePage('Overview')}>Overview</li>
                     <li style={activePage == 'Bugs' ? {background: 'gray'} : null} onClick={() => setActivePage('Bugs')}>Bugs</li>
                     <li>Settings</li>
+                    <div className="creator">
+                        <p>Made by Artluevil</p>
+                        <a href="https://github.com/Artluevil"  target="_blank">
+                            <AiFillGithub className="github-link" size='1.5em'/>
+                        </a>
+                    </div>
                 </ul>
             </div>
             {getActivePage()}

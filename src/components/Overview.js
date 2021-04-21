@@ -87,7 +87,7 @@ const Overview = (props) => {
 
     return (
         <div>
-            <h1 style={{marginLeft: '7%', marginBottom: '0px'}}>Overview</h1>
+            <h1 style={{marginLeft: '3%', marginBottom: '0px'}}>Overview</h1>
             <div style={{marginLeft: '41%'}} className="App">
                 <RadialChart 
                     width={400} 

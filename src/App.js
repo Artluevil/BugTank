@@ -6,7 +6,6 @@ import SignUpPanel from './components/SignUpPanel'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import HomePage from './components/HomePage';
 import ProjectPage from './components/ProjectPage'
-import Overivew from './components/Overview'
 import { nanoid} from 'nanoid'
 
 function App() {

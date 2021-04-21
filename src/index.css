@@ -17,6 +17,19 @@ body {
     box-shadow: 4px 6px 5px 0px rgba(186,186,186,1);
 }
 
+.sign-up-wrapper {
+    width: 500px;
+    height: 400px;
+    margin-left: 37%;
+    margin-top: 100px;
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 5px;
+    background-color: rgb(250, 250, 250);
+    -webkit-box-shadow: 4px 6px 5px 0px rgba(186,186,186,1);
+    -moz-box-shadow: 4px 6px 5px 0px rgba(186,186,186,1);
+    box-shadow: 4px 6px 5px 0px rgba(186,186,186,1);
+}
+
 .sign-in-wrapper h1{
     padding-top: 30px
 }
@@ -25,7 +38,7 @@ body {
     margin-right: 10px
 }
 
-.btn-sign-in {
+.btn-sign-in-out {
     font-family: 'Bebas Neue', cursive;
     font-size: 16px;
     background-color: #2D2926FF;
@@ -33,13 +46,23 @@ body {
     color: white;
     padding: 5px 30px;
     border-radius: 4px;
-    margin-top: 20px;
+    margin-top: 15px;
     cursor: pointer;
 }
 
 .helper-links {
-    margin-top: 30px;
+    margin-top: 20px;
 }
+
+.email {
+    margin-left: 22px;
+}
+
+.error-msg {
+    color: red;
+    font-size: 14px;
+}
+
 
 ul {
     margin-left: -20px;
@@ -67,7 +90,7 @@ ul li:hover {
     position: absolute;
     width: 100px;
     left: 40px;
-    margin-top: 40px;
+    margin-top: 10px;
     z-index: 2;
 }
 
@@ -217,6 +240,21 @@ input {
     width: 25%;
 }
 
+.project-name-wrapper {
+    background-color: rgb(46, 46, 46);
+    width: 25%;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-left: 38%;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border-radius: 5px;
+}
+
+.project-name-text {
+    color: white;
+}
+
 
 .settings-wrapper {
     position: absolute;
@@ -230,7 +268,9 @@ input {
 }
 
 .navigation {
-    height: 100%;;
+    position: absolute;
+    height: 100%;
+    width: 20%;
     margin-top: -21px;
     padding-right: 50px;
 }
@@ -392,6 +432,18 @@ input {
     background: red;
 }
 
+.creator {
+    margin-top: 390%;
+}
+
+.creator p {
+    color: gray;
+}
+
+.github-link {
+    color: gray;
+    cursor: pointer;
+}
 
 
 
