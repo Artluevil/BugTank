@@ -6,6 +6,9 @@ const LoginPanel = (props) => {
     const { email, password, setEmail, setPassword, handleLogin, emailError, passwordError} = props;
 
     return (
+        <div>
+            <h2>You can read more about BugTank <a href="/">Here!</a></h2>
+            <h2>or</h2>
             <div className="sign-in-wrapper">
                 <div className="inputs-wrapper">
                     <h1>Sign in!</h1>
@@ -24,6 +27,7 @@ const LoginPanel = (props) => {
                     <p>Forgot your password? <a href="#">Click here!</a></p>
                 </div>
             </div>
+        </div>
     )
 }
 

@@ -116,7 +116,7 @@ const Overview = (props) => {
                     <span className="block-legend red"></span>
                     <p>High</p>
                 </span>
-            </div>}
+            </div>
             <h2 style={{marginLeft: '3%'}}>Timeline</h2>
             <div style={{marginLeft: '32%'}}>
                 <XYPlot height={400} width={700} xDomain={[1, 12]} yDomain={[0, 15]}>

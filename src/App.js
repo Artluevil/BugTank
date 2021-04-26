@@ -3,9 +3,10 @@ import './App.css';
 import fire from './fire'
 import LoginPanel from './components/LoginPanel'
 import SignUpPanel from './components/SignUpPanel'
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom'
 import HomePage from './components/HomePage';
 import ProjectPage from './components/ProjectPage'
+import LandingPage from './components/LandingPage'
 import { nanoid} from 'nanoid'
 
 function App() {
@@ -208,6 +209,10 @@ function App() {
         <Switch>
           <Route exact path="/HomePage">
             <HomePage />
+          </Route>
+          {/* The default route */}
+          <Route exact path="/">
+            <LandingPage />
           </Route>
           <Route exact path="/BugTank">
             {user ? homePage : <LoginPanel 

@@ -42,7 +42,7 @@ const ProjectPage = (props) => {
     return (
         <div>
             <div>
-                <img className="nav-logo" src={BugTankLogo}/>
+                <a href="/BugTank"><img className="nav-logo" src={BugTankLogo}/></a>
             </div>
             <div className="navigation">
                 <ul>
