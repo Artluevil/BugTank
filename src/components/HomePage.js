@@ -3,6 +3,7 @@ import logo from './BugTank.png'
 import { Link } from 'react-router-dom'
 import fire from '../fire'
 import { MdClose } from 'react-icons/md'
+import { nanoid } from 'nanoid';
 
 const HomePage = (props) => {
 
@@ -44,7 +45,7 @@ const HomePage = (props) => {
             <h1 className="active-projects">Active Projects: </h1>
             {loading ? <h1>Loading...</h1> : null}
             {dataMessages.map((messages) => (
-                <div style={{width: '80%',marginLeft: "10%"}}>
+                <div key={nanoid(8)} style={{width: '80%',marginLeft: "10%"}}>
                     <Link style={{width: '100%'}} to={getLink(messages.id)}>
                         <div className="project-style" onClick={() => {handleChange(messages.nameOfProject)}}>
                             <div className="project-dsc-wrapper">

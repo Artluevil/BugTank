@@ -3,7 +3,7 @@ import './App.css';
 import fire from './fire'
 import LoginPanel from './components/LoginPanel'
 import SignUpPanel from './components/SignUpPanel'
-import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom'
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import HomePage from './components/HomePage';
 import ProjectPage from './components/ProjectPage'
 import LandingPage from './components/LandingPage'

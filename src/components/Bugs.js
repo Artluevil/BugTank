@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import BugInfo from './BugInfo'
+import BugInfo from './BugInfo';
+import { nanoid } from "nanoid"
 
 const Bugs = (props) => {
 
@@ -22,7 +23,7 @@ const Bugs = (props) => {
     function checkBugsRepository(bug) {
         if(bug.id === id) {
             return (
-                <div>
+                <div key={nanoid(8)}>
                     <span onClick={() => {handleChangePage(); handleGiveData(bug)}} className="bugs-container">
                         <p className="bugs-name">{bug.name}</p>
                         <p className="bugs-dsc">{bug.dsc}</p>
