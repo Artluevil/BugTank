@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/BugTank/static/css/main.d495fc6c.chunk.css",
+    "main.js": "/BugTank/static/js/main.ecac4d52.chunk.js",
+    "main.js.map": "/BugTank/static/js/main.ecac4d52.chunk.js.map",
+    "runtime-main.js": "/BugTank/static/js/runtime-main.9fdf188c.js",
+    "runtime-main.js.map": "/BugTank/static/js/runtime-main.9fdf188c.js.map",
+    "static/css/2.bc9454f9.chunk.css": "/BugTank/static/css/2.bc9454f9.chunk.css",
+    "static/js/2.4eff8717.chunk.js": "/BugTank/static/js/2.4eff8717.chunk.js",
+    "static/js/2.4eff8717.chunk.js.map": "/BugTank/static/js/2.4eff8717.chunk.js.map",
+    "index.html": "/BugTank/index.html",
+    "static/css/2.bc9454f9.chunk.css.map": "/BugTank/static/css/2.bc9454f9.chunk.css.map",
+    "static/css/main.d495fc6c.chunk.css.map": "/BugTank/static/css/main.d495fc6c.chunk.css.map",
+    "static/js/2.4eff8717.chunk.js.LICENSE.txt": "/BugTank/static/js/2.4eff8717.chunk.js.LICENSE.txt",
+    "static/media/BugTank.15ca06bb.png": "/BugTank/static/media/BugTank.15ca06bb.png",
+    "static/media/bug-tracker-tut1.c465c009.jpg": "/BugTank/static/media/bug-tracker-tut1.c465c009.jpg",
+    "static/media/bug-tracker-tut2.1e7f10a9.jpg": "/BugTank/static/media/bug-tracker-tut2.1e7f10a9.jpg",
+    "static/media/bug-tracker-tut4.cf151a33.jpg": "/BugTank/static/media/bug-tracker-tut4.cf151a33.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9fdf188c.js",
+    "static/css/2.bc9454f9.chunk.css",
+    "static/js/2.4eff8717.chunk.js",
+    "static/css/main.d495fc6c.chunk.css",
+    "static/js/main.ecac4d52.chunk.js"
+  ]
+}
