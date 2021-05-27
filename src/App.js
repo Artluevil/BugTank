@@ -204,7 +204,7 @@ function App() {
   const homePage = <HomePage deleteProject={deleteProject} changeCurrentProject={changeCurrentProject} dataMessages={dataMessages} loading={loading} addMessage={addMessage} handleLogout={handleLogout} userEmail={user.email} projectClicked={projectClicked} setProjectClicked={setProjectClicked}/>
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <div className="App">
         <Switch>
           <Route exact path="/HomePage">
