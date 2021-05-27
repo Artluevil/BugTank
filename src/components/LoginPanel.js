@@ -7,7 +7,7 @@ const LoginPanel = (props) => {
 
     return (
         <div>
-            <h2>You can read more about BugTank <a href="/">Here!</a></h2>
+            <h2>You can read more about BugTank <a href="/BugTank">here!</a></h2>
             <h2>or</h2>
             <div className="sign-in-wrapper">
                 <div className="inputs-wrapper">
@@ -23,7 +23,7 @@ const LoginPanel = (props) => {
                     <button className="btn-sign-in-out" onClick={handleLogin}>Sign In</button>
                 </div>
                 <div className="helper-links">
-                    <p>Dont have account? <Link to={"/SignUp"}>Sign Up!</Link></p>
+                    <p>Dont have account? <Link to="/SignUp">Sign Up!</Link></p>
                     <p>Forgot your password? <a href="#">Click here!</a></p>
                 </div>
             </div>

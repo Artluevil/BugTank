@@ -21,7 +21,7 @@ const SignUpPanel = (props) => {
                 <button className="btn-sign-in-out" onClick={handleSignUp}>Sign Up</button>
              </div>
              <div>
-                 <p>Already have account? <Link to={"/BugTank"}>Sign in!</Link></p>
+                 <p>Already have account? <Link to="/BugTankInit">Sign in!</Link></p>
              </div>
         </div>
     )
