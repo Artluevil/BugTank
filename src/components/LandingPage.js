@@ -42,7 +42,7 @@ function LandingPage() {
                     <img className="tut4-img" src={BugTankTut4}/>
                 </div>
                 <div className="link-sign-up-wrapper">
-                    <a className="link-sign-up" href='/BugTank/BugTank'>Sign up and test BugTank!</a>
+                    <a className="link-sign-up" href='/BugTankInit'>Sign up and test BugTank!</a>
                 </div>
             </div>
         </section>

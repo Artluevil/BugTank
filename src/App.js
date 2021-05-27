@@ -214,7 +214,7 @@ function App() {
           <Route exact path="/">
             <LandingPage />
           </Route>
-          <Route exact path="/BugTank">
+          <Route exact path="/BugTankInit">
             {user ? homePage : <LoginPanel 
               user={user}
               email={email} 
