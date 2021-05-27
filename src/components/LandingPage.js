@@ -4,6 +4,7 @@ import BugTankTut1 from '../Images/bug-tracker-tut1.jpg'
 import BugTankTut2 from '../Images/bug-tracker-tut2.jpg'
 import BugTankTut3 from '../Images/bug-tracker-tut3.jpg'
 import BugTankTut4 from '../Images/bug-tracker-tut4.jpg'
+import { Link } from 'react-router-dom'
 
 function LandingPage() {
     const font24px = {
@@ -42,7 +43,7 @@ function LandingPage() {
                     <img className="tut4-img" src={BugTankTut4}/>
                 </div>
                 <div className="link-sign-up-wrapper">
-                    <a className="link-sign-up" href='/BugTankInit'>Sign up and test BugTank!</a>
+                    <a className="link-sign-up"><Link style={{textDecoration: 'none', color: 'black'}} to="/BugTankInit">Sign up and test BugTank!</Link></a>
                 </div>
             </div>
         </section>
